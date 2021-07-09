@@ -12,7 +12,7 @@ export default class CandidateValidator {
 			rules.email()
 		]),
 
-		cpf: schema.number(),
+		cpf: schema.string(),
 
 		voting_number: schema.number(),
 	})

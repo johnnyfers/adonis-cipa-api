@@ -12,6 +12,8 @@ export default class Candidates extends BaseSchema {
       table.string('email').notNullable()
       table.integer('voting_number').notNullable()
 
+      table.integer('total_votes').notNullable()
+
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })

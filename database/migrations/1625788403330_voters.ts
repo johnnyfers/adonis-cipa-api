@@ -11,6 +11,7 @@ export default class Voters extends BaseSchema {
       table.string('name').notNullable()
       table.string('email').notNullable()
       table.string('password').nullable()
+      table.boolean('has_voted').notNullable()
     
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
