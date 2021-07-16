@@ -15,6 +15,9 @@ export default class Admin extends BaseModel {
   @column({ serializeAs: null })
   public password: string
 
+  @column()
+  public adminConfirmed: boolean
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
@@ -25,6 +28,13 @@ export default class Admin extends BaseModel {
   public static async hashPassword(admin: Admin) {
     if(!admin.$dirty.password) {
       admin.password = await Hash.make(admin.password)
+    }
+  }
+
+  @beforeSave()
+  public static async adminConfirmation(admin: Admin) {
+    if(!admin.$dirty.adminConfirmed) {
+      admin.adminConfirmed = true
     }
   }
 }

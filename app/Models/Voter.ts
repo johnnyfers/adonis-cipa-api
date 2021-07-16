@@ -1,9 +1,13 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, beforeSave, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import Election from './Election'
 
 export default class Voter extends BaseModel {
   @column({ isPrimary: true })
   public id: number
+
+  @column()
+  public electionId: number
 
   @column()
   public name: string
@@ -25,6 +29,10 @@ export default class Voter extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @belongsTo(()=> Election)
+  public election : BelongsTo<typeof Election>
+
 
   @beforeSave()
   public static async initializeVoter(voter: Voter) {

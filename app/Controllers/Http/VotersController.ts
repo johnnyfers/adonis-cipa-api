@@ -1,4 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+
 import Voter from 'App/Models/Voter'
 import VoterValidator from 'App/Validators/VoterValidator'
 
@@ -58,8 +59,4 @@ export default class VotersController {
       return response.badRequest(err)
     }
   }
-
-  /* public async vote ({request, response, params}){
-  
-  } */
 }

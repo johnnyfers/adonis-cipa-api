@@ -5,7 +5,13 @@ export default class Voters extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('id').primary()
+      table
+        .integer('election_id')
+        .unsigned()
+        .references('id').inTable('elections')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
 
       table.string('cpf').notNullable()
       table.string('name').notNullable()

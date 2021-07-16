@@ -16,6 +16,9 @@
   "preloads": [
     "./start/routes/admin.routes.ts",
     "./start/routes/candidate.routes.ts",
+    "./start/routes/election.routes.ts",
+    "./start/routes/solicitation.routes.ts",
+    "./start/routes/voter.routes.ts",
     "./start/routes/session.routes.ts",
     "./start/kernel"
   ],
