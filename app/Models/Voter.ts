@@ -19,9 +19,6 @@ export default class Voter extends BaseModel {
   public cpf: string
 
   @column()
-  public password: string
-
-  @column()
   public hasVoted: boolean
 
   @column.dateTime({ autoCreate: true })
@@ -32,7 +29,6 @@ export default class Voter extends BaseModel {
 
   @belongsTo(()=> Election)
   public election : BelongsTo<typeof Election>
-
 
   @beforeSave()
   public static async initializeVoter(voter: Voter) {

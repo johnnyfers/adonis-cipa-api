@@ -1,24 +1,18 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Solicitation from 'App/Models/Solicitation'
+import SolicitationValidator from 'App/Validators/SolicitationValidator'
 
 export default class SolicitationsController {
-  public async index ({}: HttpContextContract) {
-  }
 
-  public async create ({}: HttpContextContract) {
-  }
+  public async store({ request, response }: HttpContextContract) {
+    try {
+      const payload = await request.validate(SolicitationValidator)
 
-  public async store ({}: HttpContextContract) {
-  }
+      const solicitation = await Solicitation.create(payload)
 
-  public async show ({}: HttpContextContract) {
-  }
-
-  public async edit ({}: HttpContextContract) {
-  }
-
-  public async update ({}: HttpContextContract) {
-  }
-
-  public async destroy ({}: HttpContextContract) {
+      return solicitation
+    } catch(err){
+      return response.badRequest(err.message)
+    }
   }
 }

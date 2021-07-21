@@ -6,10 +6,10 @@ export default class Candidates extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table
-        .integer('election_id')
+
+      table.integer('election_id')
         .unsigned()
-        .references('id').inTable('elections')
+        .references('elections.id')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
 

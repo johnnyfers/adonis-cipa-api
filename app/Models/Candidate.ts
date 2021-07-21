@@ -33,7 +33,6 @@ export default class Candidate extends BaseModel {
   @belongsTo(()=> Election)
   public election : BelongsTo<typeof Election>
 
-
   @beforeSave()
   public static async initializeVoteCounting(candidate: Candidate) {
     if(!candidate.$dirty.totalVotes) {

@@ -1,5 +1,7 @@
 {
   "extends": "./node_modules/adonis-preset-ts/tsconfig",
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true,
   "include": [
     "**/*"
   ],
