@@ -15,6 +15,8 @@ export default class VotersController {
                 throw new Error('You already have voted')
             }
 
+            await Voter.query().where('id', `${auth.user?.id}`).update('has_voted', true)
+
             await Candidate.query()
                 .where('voting_number', candidateNumber)
                 .update('total_votes', candidate.totalVotes + 1)
